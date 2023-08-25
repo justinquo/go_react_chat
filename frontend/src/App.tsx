@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
-import Header from './Header'
-import ChatHistory from './ChatHistory'
+import Header from './components/Header'
+import ChatHistory from './components/ChatHistory'
+import ChatInput from './components/ChatInput'
 import { connect, sendMsg } from './api'
 import './App.css'
 
@@ -15,16 +16,18 @@ function App() {
     });
   })
 
-  const send = () => {
-    console.log('hello')
-    sendMsg('hello')
+  const send = (event: any) => {
+    if(event.keyCode === 13) {
+      sendMsg(event.target.value);
+      event.target.value = "";
+    }
   }
   
   return (
     <div className='app'>
       <Header />
       <ChatHistory chatHistory={chatHistory} />
-      <button onClick={() => send()}>Hit</button>
+      <ChatInput send={send}></ChatInput>
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import React from "react"
+import Message from "./Message"
 import "./ChatHistory.css"
 
 type PropType = {
@@ -6,7 +7,7 @@ type PropType = {
     {
       data: string
     }
-  ]
+  ],
 }
 
 const ChatHistory: React.FC<PropType> = (props: PropType) => {
@@ -18,7 +19,7 @@ const ChatHistory: React.FC<PropType> = (props: PropType) => {
       {
         chatHistory.map((msg, index) => {
           return (
-            <p key={index}>{msg.data}</p>
+            <Message message={msg.data} />
           )
         })
       }
