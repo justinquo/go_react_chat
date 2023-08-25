@@ -19,7 +19,7 @@ const ChatHistory: React.FC<PropType> = (props: PropType) => {
       {
         chatHistory.map((msg, index) => {
           return (
-            <Message message={msg.data} />
+            <Message message={msg.data} key={index} />
           )
         })
       }
